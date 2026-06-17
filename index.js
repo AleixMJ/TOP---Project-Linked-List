@@ -75,8 +75,28 @@ class LinkedList {
         let popNode = this.head;
         this.head = this.head.nextNode;
 
+        if (this.head === null) {
+            this.tail = null;
+        }
+
         return popNode.value;
     }
+
+    contains(value) {
+
+        let currentNode = this.head;
+
+        while (currentNode !== null) {
+            if (currentNode.value === value) {
+                return true;
+            }
+            currentNode = currentNode.nextNode;
+        }
+
+        return false
+        
+    }
+
 };
 
 class Node {
