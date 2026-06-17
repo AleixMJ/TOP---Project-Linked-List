@@ -26,3 +26,5 @@ class Node {
     }
 
 };
+
+export {LinkedList};
