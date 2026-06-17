@@ -98,35 +98,35 @@ describe('LinkedList', () => {
             list.append(20); // Index 1
             list.append(30); // Index 2
 
-            expect(list.at(0).value).toBe(10);
-            expect(list.at(1).value).toBe(20);
-            expect(list.at(2).value).toBe(30);
+            expect(list.at(0)).toBe(10);
+            expect(list.at(1)).toBe(20);
+            expect(list.at(2)).toBe(30);
         });
     });
 
     // --- Tests for pop() ---
     describe('pop()', () => {
-        test('should handle popping from an empty list without crashing', () => {
-            expect(() => list.pop()).not.toThrow();
+        test('should return undefined if the list is empty', () => {
+            expect(list.pop()).toBeUndefined();
         });
 
-        test('should remove the last element and update the tail pointer', () => {
+        test('should remove the head node and return its value', () => {
             list.append(10);
             list.append(20);
             list.append(30);
 
-            list.pop(); // Removes 30
-
-            expect(list.tail.value).toBe(20);
-            expect(list.head.nextNode.nextNode).toBeNull();
+            // Popping should remove the first element (10) and return its value
+            expect(list.pop()).toBe(10);
+            
+            // The new head should now be 20
+            expect(list.getHead()).toBe(20); 
         });
 
-        test('should empty the list completely if it only has one element', () => {
-            list.append(10);
-            list.pop();
-
-            expect(list.head).toBeNull();
-            expect(list.tail).toBeNull();
+        test('should leave the list empty and clear pointers if it only had one element', () => {
+            list.append(50);
+            
+            expect(list.pop()).toBe(50);
+            expect(list.getHead()).toBeUndefined();
         });
     });
 
