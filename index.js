@@ -38,6 +38,16 @@ class LinkedList {
         return total;
 
     }
+
+    getHead() {
+
+        return this.head ? this.head.value : undefined;
+    }
+
+    getTail() {
+
+        return this.tail ? this.tail.value : undefined;
+    }
 };
 
 class Node {

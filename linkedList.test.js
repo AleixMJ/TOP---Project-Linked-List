@@ -59,28 +59,28 @@ describe('LinkedList', () => {
     });
 
     // --- Tests for head() ---
-    describe('head()', () => {
+    describe('getHead()', () => {
         test('should return undefined if the list is empty', () => {
-            expect(list.head()).toBeUndefined();
+            expect(list.getHead()).toBeUndefined();
         });
 
         test('should return the value of the first node', () => {
             list.append(50);
             list.append(100);
-            expect(list.head()).toBe(50);
+            expect(list.getHead()).toBe(50);
         });
     });
 
     // --- Tests for tail() ---
-    describe('tail()', () => {
+    describe('getTail()', () => {
         test('should return undefined if the list is empty', () => {
-            expect(list.tail()).toBeUndefined();
+            expect(list.getTail()).toBeUndefined();
         });
 
         test('should return the value of the final node', () => {
             list.append(50);
             list.append(100);
-            expect(list.tail()).toBe(100);
+            expect(list.getTail()).toBe(100);
         });
     });
 
