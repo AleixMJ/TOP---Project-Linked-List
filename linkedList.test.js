@@ -179,4 +179,40 @@ describe('LinkedList', () => {
             expect(list.toString()).toBe("( 10 ) -> ( 20 ) -> ( 30 ) -> null");
         });
     });
+
+    // --- Tests for Extra Credit ---
+describe('Extra Credit: insertAt and removeAt', () => {
+    
+    describe('insertAt(index, ...values)', () => {
+        test('should throw RangeError if index is out of bounds', () => {
+            expect(() => list.insertAt(-1, 99)).toThrow(RangeError);
+            expect(() => list.insertAt(1, 99)).toThrow(RangeError); // Empty list, size is 0
+        });
+
+        test('should insert multiple values at the given index', () => {
+            list.append(1);
+            list.append(2);
+            list.append(3);
+
+            list.insertAt(1, 10, 11);
+            expect(list.toString()).toBe("( 1 ) -> ( 10 ) -> ( 11 ) -> ( 2 ) -> ( 3 ) -> null");
+        });
+    });
+
+    describe('removeAt(index)', () => {
+        test('should throw RangeError if index is out of bounds', () => {
+            expect(() => list.removeAt(-1)).toThrow(RangeError);
+            expect(() => list.removeAt(0)).toThrow(RangeError); // Empty list
+        });
+
+        test('should remove the node at the specific index', () => {
+            list.append(10);
+            list.append(20);
+            list.append(30);
+
+            list.removeAt(1); // Removes 20
+            expect(list.toString()).toBe("( 10 ) -> ( 30 ) -> null");
+        });
+    });
+});
 });

@@ -132,6 +132,52 @@ class LinkedList {
 
     }
 
+    insertAt(index, ...values) {
+
+        // Boundary checks
+
+        if (index < 0 || index > this.size()) {
+            throw new RangeError("Index out of bounds");
+        }
+        
+        if (values.length === 0) return;
+
+
+        // dummy node to manage Index 0 bug
+        let dummy = new Node(null);
+        dummy.nextNode = this.head;
+
+        // Main logic
+
+        let currentIndex = 0;
+        let currentNode = dummy;
+
+        while (currentNode !== null) {
+            if (currentIndex === index) {
+
+                let lastNode = currentNode.nextNode;
+                values.forEach((e) => {
+                    currentNode.nextNode = new Node(e);
+                    currentNode = currentNode.nextNode;
+                }) 
+
+                currentNode.nextNode = lastNode;
+
+                // update pointers
+                this.head = dummy.nextNode;
+                if(lastNode === null) {
+                    this.tail = currentNode;
+                }
+                return
+            }
+            currentNode = currentNode.nextNode;
+            currentIndex++;
+
+        }
+
+        
+    }
+
 };
 
 class Node {
