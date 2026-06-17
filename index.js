@@ -178,6 +178,35 @@ class LinkedList {
         
     }
 
+    removeAt(index) {
+        if (index < 0 || index >= this.size()) {
+            throw new RangeError("Index out of bounds");
+        }
+        // dummy node to manage Index 0 bug
+        let dummy = new Node(null);
+        dummy.nextNode = this.head;
+
+        let currentIndex = 0
+        let currentNode = dummy;
+        
+
+        while (currentNode !== null) {
+            if (currentIndex === index) {
+            let toDeleteNode = currentNode.nextNode;
+            currentNode.nextNode = toDeleteNode.nextNode;
+
+            // update pointers
+            this.head = dummy.nextNode;
+            if (currentNode.nextNode === null) {
+                this.tail = currentNode;
+            }
+            return
+
+            }
+            currentIndex++;
+            currentNode = currentNode.nextNode;
+        }
+    }
 };
 
 class Node {
