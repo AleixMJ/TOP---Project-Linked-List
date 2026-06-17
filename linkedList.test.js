@@ -149,7 +149,7 @@ describe('LinkedList', () => {
     // --- Tests for find(value) ---
     describe('find(value)', () => {
         test('should return null if value is not found or list is empty', () => {
-            expect(list.find(10)).toBeNull();
+            expect(list.findIndex(10)).toBe(-1);
         });
 
         test('should return the correct index of the node containing the value', () => {
@@ -157,17 +157,18 @@ describe('LinkedList', () => {
             list.append(20); // Index 1
             list.append(30); // Index 2
 
-            expect(list.find(10)).toBe(0);
-            expect(list.find(20)).toBe(1);
-            expect(list.find(30)).toBe(2);
-            expect(list.find(99)).toBeNull();
+            expect(list.findIndex(10)).toBe(0);
+            expect(list.findIndex(20)).toBe(1);
+            expect(list.findIndex(30)).toBe(2);
+            expect(list.findIndex(99)).toBe(-1);
         });
     });
 
     // --- Tests for toString() ---
     describe('toString()', () => {
-        test('should return a string showing a null list when empty', () => {
-            expect(list.toString()).toBe("null");
+        test('should return an empty string if the list is empty', () => {
+            // Updated to match your requirement: empty string, not "null"!
+            expect(list.toString()).toBe(""); 
         });
 
         test('should print the list values in the correct format string', () => {
